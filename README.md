@@ -1,11 +1,15 @@
 # HTML5 Drop 7
 
-A Drop 7 clone made for the web using Phaser JS .
+A Drop 7 clone made for the web using React .
 
 ## Getting Started
 
 ```
 clone this repo
+cd html5-drop-7
+npm start
+
+open https://localhost:3000 in your browser
 ```
 
 ## Notes
@@ -77,7 +81,41 @@ With the keywords extracted the next step is to roughly categorize them, splitti
 | Bottom |                  |            |
 | Turn   |                  |            |
 
-The process of plotting how the objects might interact without each other highlights a number of considerations:
+By thinking about the relationships between these rough nouns, verbs and adjective I can move them into potential Objects, Methods and Attributes respectively:
+
+**Note** The thought process behind this is covered in the notes section at the bottom of this document.
+
+| Objects |                                         Methods                                         |             Attributes |
+| ------- | :-------------------------------------------------------------------------------------: | ---------------------: |
+| Grid    |    is scorable? (disc's disappear, ajacent blank discs are hit), is clear?, is full?    |                squares |
+| Disc    |                                    break, disappear                                     |   hits, blank?, number |
+| Round   |                                   get remaining turns                                   | turns taken, max turns |
+| Player  | take turn (place disc), score turn(score combo, score bonus), can take turn?(game over) |                  score |
+
+# Milestones
+
+As mentioned I think it would be best to approach this project progressively. Outlining a a series of deliverable milestones which each builds complexity upon the previous on.
+
+The purepose for this is twofold:
+
+- Avoid confusion by keeping the steps as simple as possible.
+- Avoid feature creep by ensuring my efforts has a definite end point at any stage.
+
+The milestones are defined as follows:
+
+1. Render a grid on which a disc can be placed.
+2. Place multiple numbered discs that stack up on top of each other.
+3. Score when discs in column meet the condition (number on disc == number of discs in column)
+4. Score when discs in row meet the condition (number on disc == number of consecutive discs in row)
+5. Score a combo
+6. Can place blank discs that 'break' when hit twice
+7. Can fill the grid (and lose)
+8. Can finish a round (add row of blank discs at bottom)
+9. Can clear the grid (bonus score)
+
+## Notes and Issues
+
+I initially began this project using phaser but found it frustrating to both try to build this app and learn phaser as I went. Since it is a relatively simple puzzle game, I decided to build it in react.
 
 - Whilst not explicitly stated, it is implicit that the grid is made of squares. Specifically a 7x7 grid has 49 squares.
 
@@ -123,35 +161,7 @@ The process of plotting how the objects might interact without each other highli
   - The player knows how to score based on the grid's reported status during a turn, so it seems reasonable to score bonuses when the grid reports itself as clear.
 
 - As with the above, a grid knows when it is full and thus the game ends.
+
   - The player knows how to take turns and so can track if it is unable to do so and thus if the game is over.
+
     - This feels as though the player may be gaining too much responsbility at the moment but I am not yet convinced of the need to invent a game manager class to take on these responsibilities. However this may become a requirement later.
-
-Going through this process helps me move the nouns, verbs and adjectives into potential Objects, Methods and Attributes:
-
-| Objects |                                         Methods                                         |             Attributes |
-| ------- | :-------------------------------------------------------------------------------------: | ---------------------: |
-| Grid    |    is scorable? (disc's disappear, ajacent blank discs are hit), is clear?, is full?    |                squares |
-| Disc    |                                    break, disappear                                     |   hits, blank?, number |
-| Round   |                                   get remaining turns                                   | turns taken, max turns |
-| Player  | take turn (place disc), score turn(score combo, score bonus), can take turn?(game over) |                  score |
-
-# Milestones
-
-As mentioned I think it would be best to approach this project progressively. Outlining a a series of deliverable milestones which each builds complexity upon the previous on.
-
-The purepose for this is twofold:
-
-- Avoid confusion by keeping the steps as simple as possible.
-- Avoid feature creep by ensuring my efforts has a definite end point at any stage.
-
-The milestones are defined as follows:
-
-1. Render a grid on which a disc can be placed.
-2. Place multiple numbered discs that stack up on top of each other.
-3. Score when discs in column meet the condition (number on disc == number of discs in column)
-4. Score when discs in row meet the condition (number on disc == number of consecutive discs in row)
-5. Score a combo
-6. Can place blank discs that 'break' when hit twice
-7. Can fill the grid (and lose)
-8. Can finish a round (add row of blank discs at bottom)
-9. Can clear the grid (bonus score)

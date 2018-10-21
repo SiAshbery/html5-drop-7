@@ -1,0 +1,57 @@
+.App {
+  text-align: center;
+  height: 768px;
+  width: 1280px;
+  background: #282c34;
+  color: white;
+  position: absolute;
+}
+
+.play-area {
+  display: inline-block;
+  position: relative;
+  margin: auto;
+  top: 15%;
+}
+
+.placement-area {
+  display: grid;
+  grid-template-columns: repeat(7, 64px [row-start]);
+  grid-template-rows: 64px [col-start];
+  margin-bottom: 32px;
+}
+
+.placement-space {
+  margin: 2px;
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  height: 64px;
+  width: 64px;
+}
+
+.placement-space:hover {
+  background: red;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(7, 64px [col-start]);
+  grid-template-rows: repeat(7, 64px [row-start]);
+}
+
+.grid-space {
+  margin: 2px;
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  height: 64px;
+  width: 64px;
+}
+
+.disc {
+  background: red;
+  color: white;
+  margin: 2px;
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+}
